@@ -10,20 +10,20 @@
 */
 
 
-function handValue(hand) {
+  function handValue(hand) {
 //find the value of the cards I'm holding//
 
-let total = 0
-for (let i = 0; i < hand.length; i++) {
+  let total = 0
+  for (let i = 0; i < hand.length; i++) {
   let card = hand[i]
-  if(card === "K" || card === "Q" || card === "J"){
-    card = 10
-  }
-  if(card === "A"){
-    card = 11
-  }
+  if(card === "K" || card === "Q" || card === "J") {
+  card = 10
+}
+  else if(card === "A") {
+  card = 11
+}
   total += Number(card)
-  }
+}
   return total;
 }
 
