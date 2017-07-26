@@ -18,8 +18,9 @@
   let card = hand[i]
   if(card === "K" || card === "Q" || card === "J") {
   card = 10
-}
-  else if(card === "A") {
+} else if( hand > 10 && card ==="A"){
+  card = 1
+} else if(card === "A") {
   card = 11
 }
   total += Number(card)
