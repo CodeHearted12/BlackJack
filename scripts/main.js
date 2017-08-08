@@ -13,20 +13,23 @@
   function handValue(hand) {
 //find the value of the cards I'm holding//
 
-  let total = 0
-  for (let i = 0; i < hand.length; i++) {
-  let card = hand[i]
+  let total = 0;
+  let result = hand.reduce((acc, val) => {
+
   if(card === "K" || card === "Q" || card === "J") {
-  card = 10
-} else if( hand > 10 && card ==="A"){
-  card = 1
-} else if(card === "A") {
-  card = 11
-}
-  total += Number(card)
-}
-  return total;
-}
+  return acc + 10;
+} else if( card === "A"){
+  total++;
+  return acc + 11;
+  }
+return acc + parseInt(val);
+}, 0);
+for (total; total > 0 && result > 21; total-- {
+  result -= 10;
+ }
+  return result;
+
+};
 
 
 /* -----  Hints ------
