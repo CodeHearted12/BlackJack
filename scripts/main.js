@@ -10,32 +10,40 @@
 */
 
 
-  function handValue(hand) {
-//find the value of the cards I'm holding//
+function handValue(hand) {
+  //find the value of the s I'm holding//
 
   let total = 0;
-  let result = hand.reduce((acc, val) => {
-
-  if(card === "K" || card === "Q" || card === "J") {
-  return acc + 10;
-} else if( card === "A"){
-  total++;
-  return acc + 11;
-  }
-return acc + parseInt(val);
-}, 0);
-for (total; total > 0 && result > 21; total-- {
-  result -= 10;
- }
-  return result;
-
-};
 
 
-/* -----  Hints ------
+hand.forEach( function (card){
 
-1..10   ==> Worth face value (1 = 1, 4 = 4, etc)
-K, Q, J ==> Worth 10
-A       ==> Worth 1 or 11
+    if ( card === "K" || card === "Q" || card === "J") {
+       total += 10;
+    } else if (card === "A" && total >= 11) {
 
-*/
+    total += 1;
+    }
+    else if (card === "A" && total <= 11) {
+      total += 11;
+    }
+    else{ total += Number(card)
+    }
+    if ( hand.includes ("A") && total > 21){
+      total -= 10
+    }
+  })
+  return total;
+}
+
+
+// };
+
+
+  /* -----  Hints ------
+
+  1..10   ==> Worth face value (1 = 1, 4 = 4, etc)
+  K, Q, J ==> Worth 10
+  A       ==> Worth 1 or 11
+
+  */
