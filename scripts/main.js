@@ -11,30 +11,23 @@
 
 
 function handValue(hand) {
-  //find the value of the s I'm holding//
-
-  let total = 0;
-
-
-hand.forEach( function (card){
-
-    if ( card === "K" || card === "Q" || card === "J") {
-       total += 10;
-    } else if (card === "A" && total >= 11) {
-
-    total += 1;
+  let Ace = 0;
+  let total = hand.reduce((acc, val) => {
+    if (val === 'K' || val === 'Q' || val === 'J') {
+      return acc + 10;
+    } else if (val === 'A') {
+      Ace++;
+      return acc + 11;
     }
-    else if (card === "A" && total <= 11) {
-      total += 11;
-    }
-    else{ total += Number(card)
-    }
-    if ( hand.includes ("A") && total > 21){
-      total -= 10
-    }
-  })
+    return acc + parseInt(val);
+  }, 0);
+  for (Ace; Ace > 0 && total > 21; Ace--) {
+    total -= 10;
+ }
   return total;
-}
+};
+
+
 
 
 // };
